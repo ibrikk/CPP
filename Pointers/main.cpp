@@ -40,7 +40,7 @@ double low_temp {37.2};
 double *temp_ptr; // Pointers can be uninitialized but better to initialize as nullptr
 temp_ptr = &high_temp; // points to high temp
 temp_ptr = &low_temp; // now points to low temp // Pointer are variables so they can change
-temp_ptr = nullPtr; // Pointers can be null
+temp_ptr = nullptr; // Pointers can be null
 
 
 double high_temp {100.7};
@@ -59,5 +59,24 @@ cout << "First stooge is: " << (*vector_ptr).at(0) << endl; // * has lower prece
 cout << "Stooges: " << for (auto stooge: *vector_ptr)
                         cout << stoogle << " " << endl;
 
+// Dynamic Memory Allocation
+int *int_ptr {nullptr};
+int_ptr = new int; // allocate an integer on the heap
+cout << int_ptr << endl; // 0x2747f28
+cout << *int_ptr << endl; // 41188048 - garbage - because int hasn't been initialized
+*int_ptr = 100;
+cout << *int_ptr << endl; // 100
+
+delete int_ptr; // frees the allocated memory
+
+
+int *array_ptr = {nullptr};
+int size = {};
+
+cout << "How big do you want the array?";
+cin >> size;
+array_ptr = new int[size]; // allocate array on the heap
+
+delete [] array_ptr; // frees allocated storage
 return 0;
 }
